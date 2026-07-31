@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="file.css">
+</head>
+<body>
+   <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><h2>Pengeluaran Bulanan</h2></a>
+  </div>
+</nav> 
+<div class="kontainer_utama">
+<div class="kontainer-form">
+        <header>
+            <div class="judul-form">
+                <h3>Tambahkan Pengeluaran</h3>
+                <div id="peringatan"></div>
+            </div>
+        </header>
+    <form action="biodata">
+
+        <div class="name">
+            <h4>Nama Pengeluran:</h4>
+            <input type="text" name="name" 
+            id="pengeluaran"
+             placeholder="Contoh: Bayar wifi">
+        </div>
+
+        <div class="nominal">
+            <h4>Nominal/Harga(Rp):</h4>
+            <input type="number" name="date" 
+            id="nominal"
+             placeholder="Contoh :150000">
+        </div>
+
+        <button type="button" id="tombol_data">
+            <h4>Simpan Data</h4>
+        </button>
+
+    </form>    
+    </div>
+<!-- kontainer data -->
+    <div class="kontainer-data">
+        <header class="judul-data">
+            <h3>Daftar Pengeluaran</h3>
+            <h3>Harga</h3>
+        </header>
+
+        <div class="tempat-data-ditampilkan" id="tempat-kartu">  
+           
+        </div>
+         <button class="hapus" id="tombol_hapus_semua">Hapus Semua Data</button>
+    </div>
+</div>
+<script>
+   const buttonInput = document.getElementById("tombol_data");
+const tempatKartu = document.getElementById("tempat-kartu");
+
+  // 1.fungsi untuk menampilkan data
+function tampilkanSemuaData() {
+
+    let listPengeluaran = JSON.parse(localStorage.getItem("dataPengeluaran")) || [];
+
+    tempatKartu.innerHTML = "";
+
+    listPengeluaran.forEach((data, index) => {
+        const tampilan = `
+            <div class="tampilan1">
+                <h4 class="tampilanpengeluaran">${data.nama}</h4>
+                <p>Rp.${data.harga}</p>    
+            </div> `;
+        tempatKartu.innerHTML += tampilan;
+    });
+}
+
+// 2. fungsi untuk mengambil dan menyimpan data baru
+function ambilData() {
+    const inputPengeluaran = document.getElementById("pengeluaran").value;
+    const inputNominal = document.getElementById("nominal").value;
+
+    if (inputPengeluaran && inputNominal) {
+        const dataBaru = {
+            nama: inputPengeluaran,
+            harga: inputNominal
+        };
+        let listPengeluaran = JSON.parse(localStorage.getItem("dataPengeluaran")) || [];
+
+        listPengeluaran.push(dataBaru);
+
+        localStorage.setItem("dataPengeluaran", JSON.stringify(listPengeluaran));
+        
+        document.getElementById("pengeluaran").value = "";
+        document.getElementById("nominal").value = "";
+        
+
+        tampilkanSemuaData();
+    } else {
+        alert("Lengkapi data anda!");
+    }
+}
+
+// 3. fungsi menghapus semua data
+function hapusSemuaData() {
+    localStorage.removeItem("dataPengeluaran");
+
+    tampilkanSemuaData();
+}
+
+tampilkanSemuaData(); 
+
+buttonInput.addEventListener('click', ambilData);
+
+const buttonHapusSemua = document.getElementById("tombol_hapus_semua");
+
+buttonHapusSemua.addEventListener('click', hapusSemuaData);
+
+</script>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>

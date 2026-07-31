@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.navbar,.bg-body-tertiary {
+    background-color: salmon !important;
+}
+.navbar h2 {
+    color: white;
+    text-decoration: 2px underline white;
+    gap: 5px;
+}
+.kontainer_utama {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.kontainer-form {
+    width: 35%;
+    min-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid salmon;
+    background-color: azure;
+    border-radius: 10px;
+}
+.judul-form {
+    color: salmon;
+    text-decoration: 2px underline salmon;
+
+}
+.name,.nominal {
+    margin-top: 30px;
+}
+.kontainer-form input {
+    border: 1px solid salmon;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+form button {
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 5px 20px;
+    color: teal;
+    background-color: azure;
+    border: 1px solid salmon;
+    border-radius: 10px;
+}
+button:hover {
+    color: white;
+    background-color: salmon;
+}
+.kontainer-data {
+    width: 45%;
+    min-width: 400px;
+    margin: 30px auto;
+    border: 2px solid salmon;
+    background-color: azure;
+    border-radius: 10px;
+    padding: 40px;
+}
+.kontainer-data .judul-data {
+    width: 100%;
+    color: salmon;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.data-masuk {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid salmon;
+    font-size: 25px;
+    padding-bottom: 5px;
+}
+.hapus {
+     width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 5px 20px;
+    color: teal;
+    background-color: azure;
+    border: 1px solid salmon;
+    border-radius: 10px;
+}
+.tampilan1 {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border-bottom: 1px solid salmon;
+    margin: 20px;
+    margin-right: 20px;
+}
+.tampilanpengeluaran {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
